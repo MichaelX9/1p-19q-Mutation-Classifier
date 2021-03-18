@@ -83,12 +83,3 @@ def slice_feature_dict(image_name, dir_name):
 
 
 
-#idata = image.get_fdata()
-#mdata = mask.get_fdata()
-#new = nib.Nifti1Image(idata[:,:,slices[0]], image.affine)
-#newm = nib.Nifti1Image(mdata[:,:,slices[0]], image.affine)
-#nib.save(new, newName)
-#nib.save(newm, newMask)
-#print(new.header)
-
-

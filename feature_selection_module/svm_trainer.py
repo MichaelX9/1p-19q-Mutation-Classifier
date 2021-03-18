@@ -1,3 +1,5 @@
+### SVM model for prediction and generation of test results ###
+
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd  
@@ -28,6 +30,7 @@ feature_file_6 = '/mnt/c/Users/Michael/Desktop/PyRadiomics/GeneratedFeatures/cen
 #feature_file_2 = '/mnt/c/Users/Michael/Desktop/PyRadiomics/GeneratedFeatures/aboveslices/T2/correlation_selection/selected_.7.csv'
 deletion_nums = ['LGG-219', 'LGG-273', 'LGG-277', 'LGG-280', 'LGG-285', 'LGG-297', 'LGG-327', 'LGG-338', 'LGG-343', 'LGG-351', 'LGG-354', 'LGG-363', 'LGG-374', 'LGG-375', 'LGG-391', 'LGG-516', 'LGG-203', 'LGG-286', 'LGG-533', 'LGG-545', 'LGG-558', 'LGG-574', 'LGG-585', 'LGG-589', 'LGG-601', 'LGG-622', 'LGG-625', 'LGG-306', 'LGG-631', 'LGG-210', 'LGG-240', 'LGG-263', 'LGG-311', 'LGG-314', 'LGG-321', 'LGG-346', 'LGG-519', 'LGG-234', 'LGG-293', 'LGG-532', 'LGG-552', 'LGG-591', 'LGG-594', 'LGG-609', 'LGG-610', 'LGG-613', 'LGG-624', 'LGG-647', 'LGG-766', 'LGG-371']
 
+### generate array of the confirmed classifications of the images in the train and testing sets. ###
 def classification_list():
     trf = pd.read_csv(train_file)
     pymrmr.mRMR(trf, 'MID', 5)
@@ -115,6 +118,7 @@ def classification_list():
     #return [[og_features, og_features_1, og_features_2], classification_lister]
     #return [[og_features_T1, og_features_T2], classification_lister]
 
+### k_fold train and test function to test accuracy ###
 def k_train_test(og_features, classification_lister):
     X = np.array(og_features[0])
     test = np.array(og_features[1])
@@ -258,7 +262,7 @@ def k_train_test(og_features, classification_lister):
     #return [(test_total/10), (train_total/10), (C_total/10)]
     return test_total
 
-
+### function to test trained model and return test accuracy, trained accuracy, and best parameters ###
 def train_test_run(og_features, classification_lister):
     #print("generated classification classes")
     #print(classification_lister)
@@ -376,27 +380,5 @@ def train_test_run(og_features, classification_lister):
     #print(cross_val_score(classifier, X, y, cv=10, scoring='accuracy'))
 
 feature_classes = classification_list()
-#print(train_test_run(feature_classes[0], feature_classes[1]))
 result = k_train_test(feature_classes[0], feature_classes[1])
-#while(result <= 0.7):
-#    result = result = k_train_test(feature_classes[0], feature_classes[1])
 print(result)
-#test_results = []
-#train_results = []
-#C_param = []
-#C_total = 0
-#for c in range(0,10):
-#    test_total = 0
-#    train_total = 0
-#    for i in range(0,10):
-#        train_test = k_train_test(feature_classes[0], feature_classes[1])
-#        test_total += train_test[0]
-#        train_total += train_test[1]
-#        C_param.append(train_test[2])
-#        C_total += train_test[2]
-#    test_results.append(train_test[0])
-#    train_results.append(train_test[1])
-#print(C_param)
-#print(C_total/100)
-#print(test_results)
-#print(train_results)

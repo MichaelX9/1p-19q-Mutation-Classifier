@@ -1,3 +1,5 @@
+### Image sorting by slice relation ####
+
 #!/usr/bin/env python3
 import os, sys, statistics, dicom2nifti, math
 import numpy as np
