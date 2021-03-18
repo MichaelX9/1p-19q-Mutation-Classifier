@@ -1,6 +1,8 @@
+### sort out deletive mutation images from non-deletion images ###
+s
 #!/usr/bin/env python3
 import numpy as np
-import pandas as pd 
+import pandas as pd
 import scipy
 import scipy.io
 import sklearn 

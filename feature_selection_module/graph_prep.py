@@ -1,3 +1,5 @@
+### altering data for graph generation ###
+
 #!/usr/bin/env python3
 import os, sys, statistics, dicom2nifti, math
 import numpy as np
